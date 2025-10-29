@@ -2,6 +2,10 @@
 
 This project predicts the realistic energy consumption (and thus range) of an Electric Vehicle based on real-world factors like speed, weather, and road conditions.
 
+## Problem statement
+
+The manufacturer's advertised Electric Vehicle (EV) range is unreliable because it's measured in ideal lab conditions and fails to account for real-world variables like weather (temperature, A/C use), driving style (speed), and terrain (slope).
+
 ## Features
 * Uses a Multi-Variate Linear Regression model trained on the Kaggle EV Energy Consumption Dataset.
 * Includes Exploratory Data Analysis (EDA) visualizations.
