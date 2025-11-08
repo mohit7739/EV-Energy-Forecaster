@@ -50,7 +50,7 @@ This project was built to solve the problem of EV "range anxiety." While manufac
     * Create a secrets file: `nano .streamlit/secrets.toml`
     * Paste your Gemini API key into this file:
         ```toml
-        GEMINI_API_KEY = "YOUR_API_KEY_HERE"
+        GEMINI_API_KEY = "secret api key"
         ```
     * Save and close the file. (This file is ignored by `.gitignore` so it will not be uploaded).
 
