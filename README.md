@@ -1,5 +1,7 @@
 # 🚗 EV Smart Range Forecaster
 
+### 🚀 [**View the Live Demo Here!**](https://ev-energy-forecaster.streamlit.app/) 🚀
+
 This is a complete web application that predicts Electric Vehicle (EV) energy consumption using a machine learning model and provides a generative AI assistant for user queries.
 
 This project was built to solve the problem of EV "range anxiety." While manufacturers provide an official range, the *real-world* range is heavily affected by factors like weather, speed, and road type. This tool provides a more accurate prediction based on these real-world conditions.
@@ -50,7 +52,7 @@ This project was built to solve the problem of EV "range anxiety." While manufac
     * Create a secrets file: `nano .streamlit/secrets.toml`
     * Paste your Gemini API key into this file:
         ```toml
-        GEMINI_API_KEY = "secret api key"
+        GEMINI_API_KEY = "API_KEY🤫"
         ```
     * Save and close the file. (This file is ignored by `.gitignore` so it will not be uploaded).
 
