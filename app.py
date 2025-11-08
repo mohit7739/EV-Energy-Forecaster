@@ -75,9 +75,6 @@ def load_genai_model():
         return None
 
 # --- Local Python Function to run the ML model ---
-# --- THIS IS THE FIX ---
-# The function definition is updated to accept ALL possible arguments from the manual sliders
-# or the chatbot.
 def predict_energy(model, model_columns, 
                    speed_kmh=None, temperature_c=None, slope_percent=None, 
                    driving_mode=None, road_type=None, traffic_condition=None, weather_condition=None,
@@ -86,10 +83,10 @@ def predict_energy(model, model_columns,
                    tire_pressure_psi=None, vehicle_weight_kg=None, distance_travelled_km=None):
     """
     This is the actual Python function that runs your saved scikit-learn model.
-    It now accepts all 16 features and uses a default if one isn't provided.
+    It now accepts all 16 arguments or None.
     """
     
-    # Create a dictionary for all inputs, using provided values or defaults
+    # Create a dictionary for all inputs.
     input_data = {
         'Speed_kmh': speed_kmh if speed_kmh is not None else 60.0,
         'Acceleration_ms2': acceleration_ms2 if acceleration_ms2 is not None else 0.0,
@@ -196,25 +193,16 @@ with st.expander("Show Manual Prediction Controls"):
     if st.button("Predict Manually"):
         if model:
             # Run the prediction logic
-            # --- THIS IS THE FIX ---
-            # Now the function call passes all 16 arguments
             prediction = predict_energy(
                 model=model, model_columns=model_columns,
-                speed_kmh=speed_kmh_slider, 
-                temperature_c=temperature_c_slider, 
-                slope_percent=slope_percent_slider, 
-                driving_mode=driving_mode_slider, 
-                road_type=road_type_slider, 
-                traffic_condition=traffic_condition_slider, 
+                speed_kmh=speed_kmh_slider, temperature_c=temperature_c_slider, 
+                slope_percent=slope_percent_slider, driving_mode=driving_mode_slider, 
+                road_type=road_type_slider, traffic_condition=traffic_condition_slider, 
                 weather_condition=weather_condition_slider,
-                acceleration_ms2=acceleration_ms2_slider, 
-                battery_state_percent=battery_state_percent_slider,
-                battery_voltage_v=battery_voltage_v_slider, 
-                battery_temp_c=battery_temp_c_slider,
-                humidity_percent=humidity_percent_slider, 
-                wind_speed_ms=wind_speed_ms_slider,
-                tire_pressure_psi=tire_pressure_psi_slider, 
-                vehicle_weight_kg=vehicle_weight_kg_slider,
+                acceleration_ms2=acceleration_ms2_slider, battery_state_percent=battery_state_percent_slider,
+                battery_voltage_v=battery_voltage_v_slider, battery_temp_c=battery_temp_c_slider,
+                humidity_percent=humidity_percent_slider, wind_speed_ms=wind_speed_ms_slider,
+                tire_pressure_psi=tire_pressure_psi_slider, vehicle_weight_kg=vehicle_weight_kg_slider,
                 distance_travelled_km=distance_travelled_km_slider
             )
             
@@ -276,8 +264,6 @@ if prompt := st.chat_input("Ask a general question or for a prediction...", disa
                     # Case: AI found parameters, let's run the model!
                     
                     # Call our *local* Python function
-                    # --- THIS IS THE FIX ---
-                    # Now the chatbot call also uses the full function, passing None for missing args
                     prediction_result = predict_energy(
                         model=model,
                         model_columns=model_columns,
